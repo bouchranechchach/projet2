@@ -1,0 +1,41 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ServiceClassService WSDL service -->
+
+  <service name="ServiceClass" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://WebServicePackage"/>
+      <parameter name="wsdlServiceElement" value="ServiceClassService"/>
+      <parameter name="schemaQualified" value="http://WebServicePackage"/>
+      <parameter name="wsdlServicePort" value="ServiceClass"/>
+      <parameter name="className" value="WebServicePackage.ServiceClassSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ServiceClass"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="calculAnnuite" qname="operNS:calculAnnuite" xmlns:operNS="http://WebServicePackage" returnQName="retNS:calculAnnuiteReturn" xmlns:retNS="http://WebServicePackage" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:cap" xmlns:pns="http://WebServicePackage" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:duree" xmlns:pns="http://WebServicePackage" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:ti" xmlns:pns="http://WebServicePackage" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="calculDuree" qname="operNS:calculDuree" xmlns:operNS="http://WebServicePackage" returnQName="retNS:calculDureeReturn" xmlns:retNS="http://WebServicePackage" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:cap" xmlns:pns="http://WebServicePackage" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:ann" xmlns:pns="http://WebServicePackage" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:ti" xmlns:pns="http://WebServicePackage" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="calculCapital" qname="operNS:calculCapital" xmlns:operNS="http://WebServicePackage" returnQName="retNS:calculCapitalReturn" xmlns:retNS="http://WebServicePackage" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:ann" xmlns:pns="http://WebServicePackage" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:duree" xmlns:pns="http://WebServicePackage" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:ti" xmlns:pns="http://WebServicePackage" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="calculDuree calculAnnuite calculCapital"/>
+
+  </service>
+</deployment>

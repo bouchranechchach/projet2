@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://WebServicePackage" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://WebServicePackage" xmlns:intf="http://WebServicePackage" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://WebServicePackage" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="calculAnnuite">
+    <complexType>
+     <sequence>
+      <element name="cap" type="xsd:double"/>
+      <element name="duree" type="xsd:int"/>
+      <element name="ti" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="calculAnnuiteResponse">
+    <complexType>
+     <sequence>
+      <element name="calculAnnuiteReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="calculDuree">
+    <complexType>
+     <sequence>
+      <element name="cap" type="xsd:double"/>
+      <element name="ann" type="xsd:double"/>
+      <element name="ti" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="calculDureeResponse">
+    <complexType>
+     <sequence>
+      <element name="calculDureeReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="calculCapital">
+    <complexType>
+     <sequence>
+      <element name="ann" type="xsd:double"/>
+      <element name="duree" type="xsd:int"/>
+      <element name="ti" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="calculCapitalResponse">
+    <complexType>
+     <sequence>
+      <element name="calculCapitalReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="calculAnnuiteResponse">
+
+      <wsdl:part element="impl:calculAnnuiteResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="calculDureeRequest">
+
+      <wsdl:part element="impl:calculDuree" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="calculCapitalRequest">
+
+      <wsdl:part element="impl:calculCapital" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="calculAnnuiteRequest">
+
+      <wsdl:part element="impl:calculAnnuite" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="calculDureeResponse">
+
+      <wsdl:part element="impl:calculDureeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="calculCapitalResponse">
+
+      <wsdl:part element="impl:calculCapitalResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ServiceClass">
+
+      <wsdl:operation name="calculAnnuite">
+
+         <wsdl:input message="impl:calculAnnuiteRequest" name="calculAnnuiteRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:calculAnnuiteResponse" name="calculAnnuiteResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="calculDuree">
+
+         <wsdl:input message="impl:calculDureeRequest" name="calculDureeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:calculDureeResponse" name="calculDureeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="calculCapital">
+
+         <wsdl:input message="impl:calculCapitalRequest" name="calculCapitalRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:calculCapitalResponse" name="calculCapitalResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ServiceClassSoapBinding" type="impl:ServiceClass">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="calculAnnuite">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="calculAnnuiteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="calculAnnuiteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="calculDuree">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="calculDureeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="calculDureeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="calculCapital">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="calculCapitalRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="calculCapitalResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ServiceClassService">
+
+      <wsdl:port binding="impl:ServiceClassSoapBinding" name="ServiceClass">
+
+         <wsdlsoap:address location="http://localhost:8080/AppCredit/services/ServiceClass"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
